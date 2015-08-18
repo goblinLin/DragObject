@@ -1,13 +1,8 @@
 -----------------------------------------------------------------------------------------
---
--- main.lua
---
------------------------------------------------------------------------------------------
-
 -- 示範如何撰寫元件拖移功能
 -- Author: Zack Lin
 -- Time: 2015/3/13
-
+-----------------------------------------------------------------------------------------
 _SCREEN = {
 	WIDTH = display.viewableContentWidth,
 	HEIGHT = display.viewableContentHeight
@@ -18,10 +13,11 @@ _SCREEN.CENTER = {
 	Y = display.contentCenterY
 }
 
-
+--佈置元件
 local image1 = display.newImageRect( "assasin.jpg", 80 , 160 )
 image1.x = _SCREEN.CENTER.X
 image1.y = _SCREEN.CENTER.Y - 100
+--調整半透明度
 image1.alpha = 0.5
 
 local image2 = display.newImageRect( "girl.jpg", 80 , 160 )
@@ -29,7 +25,8 @@ image2.x = _SCREEN.CENTER.X
 image2.y = _SCREEN.CENTER.Y + 100
 image2.alpha = 0.5
 
-function  touch( e )
+--函式宣告
+local function  touch( e )
 	local obj = e.target
 	if(e.phase == "began") then
 		display.getCurrentStage( ):setFocus( obj )
