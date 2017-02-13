@@ -32,6 +32,7 @@ local function  touch( e )
 		display.getCurrentStage( ):setFocus( obj )
  		obj.isFocus = true
  		obj.alpha = 1
+ 		obj:toFront()
  		--將該物件起始的位置先儲存起來
  		obj.oldX = obj.x
  		obj.oldY = obj.y
@@ -45,6 +46,21 @@ local function  touch( e )
  		local move_y = e.y - e.yStart
  		obj.x = obj.oldX + move_x
  		obj.y = obj.oldY + move_y
+ 		--檢查X座標
+ 		if (obj.x < 0) then
+ 			obj.x = 0
+ 		end
+ 		if (obj.x > 320) then
+ 			obj.x = 320
+ 		end
+ 		--檢查Y座標
+ 		if (obj.y < 0) then
+ 			obj.y = 0
+ 		end
+
+ 		if (obj.y > 480) then
+ 			obj.y = 480
+ 		end
 	end
 	return true
 end
